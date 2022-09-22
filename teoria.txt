@@ -1,0 +1,21 @@
+COMANDO PARA CREAR PROYECTO DE DJANGO CON ADMIN
+
+    django-admin startproject nombre_proyecto
+
+DESPLIEGUE DE APP
+
+documentación de despliegue de app
+    https://render.com/docs/deploy-django
+
+
+cambiar el SECRET KEY en settings.py utilizando import os
+
+    os.environ.get('SECRET_KEY', default='your secret key')
+
+    DEBUG = 'RENDER' not in os.environ #si no esta en el entorno de produccion
+
+instalar dj-database-url 
+    pip install dj-database-url psycopg2-binary
+    Esto es para que ya no use la base de datos sqlite sino que use la base de datos de postgresql que ofrece la nube de render
+
+    pip freeze > requirements.txt

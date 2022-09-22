@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+<h1 class="text-center py-5 display-3">Task pending</h1>
+
+{% for task in tasks %}
+    <div class="task mt-5">
+        <main class="container">
+        <div class="table-responsive-sm">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Completed</th>
+                    <th>Created</th>
+                    <th>User</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% if task.important %}
+                        <td><h2 class="fw-bold text-success">{{ task.title }}</h2></td>
+                    {% else %}
+                        <td><h2 class="fw-bold">{{ task.title }}</h2></td>
+                    {% endif %}
+                    <td>{{task.description}}</td>
+                    <td>{{task.datecompleted|date:'M j Y:i'}}</td>  <!-- el date:'M j Y:i' es para darle un formato de mes dia y año-->
+                    <td>{{task.created}}</td>
+                    <td>{{task.user.username}}</td>
+                    <td><a href="{% url 'task_detail' task.id %}">Detalle</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+    </div>
+{% endfor %}
+
+{% endblock %}
